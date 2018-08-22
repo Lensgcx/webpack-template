@@ -1,10 +1,16 @@
-'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+'use strict';
 
-function resolve (dir) {
+/**
+ * path 【路径模块】
+ * path模块提供了用于处理文件和目录路径的使用工具
+ */
+const path = require('path');
+
+const utils = require('./utils');//build目录中的utils.js文件
+const config = require('../config');//config目录中的index文件
+const vueLoaderConfig = require('./vue-loader.conf');//build目录中的vue-loader.conf.js文件
+
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -17,7 +23,7 @@ const createLintingRule = () => ({
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
-})
+});
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -35,7 +41,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src'),devServer
     }
   },
   module: {
@@ -89,4 +95,4 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   }
-}
+};
